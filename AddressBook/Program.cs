@@ -37,6 +37,7 @@ namespace AddressBook
             Console.WriteLine("A - Add a Contact Details");
             Console.WriteLine("L - List All Contact Details");
             Console.WriteLine("E - Edit Contact Details");
+            Console.WriteLine("D - Delete Contact Details");
             Console.WriteLine("Q - Quit");
         }
         void performAction(string selection)
@@ -118,6 +119,19 @@ namespace AddressBook
                     else
                     {
                         Console.WriteLine("Details for {0} count not be found.", firstName);
+                    }
+                    break;
+                case "D":
+                    Console.WriteLine("-------------");
+                    Console.WriteLine("Enter contact name to Delete: ");
+                    firstName = Console.ReadLine();
+                    if (book.remove(firstName))
+                    {
+                        Console.WriteLine("Contact successfully deleted");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Details for {0} could not be found.", firstName);
                     }
                     break;
             }
