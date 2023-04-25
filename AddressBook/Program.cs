@@ -32,9 +32,10 @@ namespace AddressBook
         }
         void displayMenu()
         {
-            Console.WriteLine("\nADDRESS BOOK");
+            Console.WriteLine("\n----ADDRESS BOOK----");
             Console.WriteLine("=========");
             Console.WriteLine("A - Add a Contact Details");
+            Console.WriteLine("L - List All Contact Details");
             Console.WriteLine("Q - Quit");
         }
         void performAction(string selection)
@@ -71,11 +72,23 @@ namespace AddressBook
 
                     if (book.add(firstName, lastName, address, city, state, zip, phone, email))
                     {
-                        Console.WriteLine("Contact successfully added!");
+                        Console.WriteLine("Contact Successfully Added!");
                     }
                     else
                     {
-                        Console.WriteLine("An address is already on file for {0}", firstName);
+                        Console.WriteLine("A address is already on file for {0}", firstName);
+                    }
+                    break;
+                case "L":
+                    if (book.isEmpty())
+                    {
+                        Console.WriteLine("There are no entries.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("-------------");
+                        Console.WriteLine("LIST OF CONTACT DETAILS:");
+                        book.list((a) => Console.WriteLine("First Name: {0}\n Last Name: {1}\n Address: {2}\n City: {3}\n State: {4}\n Zip Code: {5}\n Phone Number: {6}\n Email: {7} \n-------------", a.firstName, a.lastName, a.address, a.city, a.state, a.zip, a.phone, a.email));
                     }
                     break;
             }

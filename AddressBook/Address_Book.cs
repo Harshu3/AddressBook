@@ -31,6 +31,15 @@ namespace AddressBook
             }
         }
 
+        public void list(Action<Address> action)
+        {
+            addresses.ForEach(action);
+        }
+
+        public bool isEmpty()
+        {
+            return (addresses.Count == 0);
+        }
         public Address find(string name)
         {
             Address addr = addresses.Find((a) => a.firstName == name);
