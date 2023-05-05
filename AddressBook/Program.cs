@@ -54,31 +54,36 @@ namespace AddressBook
             switch (selection.ToUpper())
             {
                 case "A":
-                    Console.WriteLine("To add a Contact");
-                    Console.WriteLine("Enter First Name:");
-                    firstName = Console.ReadLine();
-                    Console.WriteLine("Enter Last Name:");
-                    lastName = Console.ReadLine();
-                    Console.WriteLine("Enter Address:");
-                    address = Console.ReadLine();
-                    Console.WriteLine("Enter City:");
-                    city = Console.ReadLine();
-                    Console.WriteLine("Enter State:");
-                    state = Console.ReadLine();
-                    Console.WriteLine("Enter Zip Code");
-                    zip = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Enter Phone Number:");
-                    phone = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Enter Email:");
-                    email = Console.ReadLine();
+                    Console.WriteLine("How many contacts you want to add?");
+                    int num = Convert.ToInt32(Console.ReadLine());
+                    for (int i = 1; i <= num; i++)
+                    {
+                        Console.WriteLine("To add a Contact");
+                        Console.WriteLine("Enter First Name:");
+                        firstName = Console.ReadLine();
+                        Console.WriteLine("Enter Last Name:");
+                        lastName = Console.ReadLine();
+                        Console.WriteLine("Enter Address:");
+                        address = Console.ReadLine();
+                        Console.WriteLine("Enter City:");
+                        city = Console.ReadLine();
+                        Console.WriteLine("Enter State:");
+                        state = Console.ReadLine();
+                        Console.WriteLine("Enter Zip Code");
+                        zip = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Phone Number:");
+                        phone = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter Email:");
+                        email = Console.ReadLine();
 
-                    if (book.add(firstName, lastName, address, city, state, zip, phone, email))
-                    {
-                        Console.WriteLine("Contact Successfully Added!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("A address is already on file for {0}", firstName);
+                        if (book.add(firstName, lastName, address, city, state, zip, phone, email))
+                        {
+                            Console.WriteLine("Contact Successfully Added!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("A address is already on file for {0}", firstName);
+                        }
                     }
                     break;
                 case "L":
