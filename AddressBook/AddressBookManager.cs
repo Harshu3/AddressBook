@@ -55,7 +55,25 @@ namespace AddressBookSystem
                 switch (ch)
                 {
                     case 'A':
-                        addressBook.AddToContact();
+                        if (addressBook.addresses.Count == 0)
+                        {
+                            addressBook.AddToContact();
+                        }
+                        else
+                        {
+                            foreach (Address c in addressBook.addresses)
+                            {
+                                Console.WriteLine("Enter Name of the person");
+                                var name = Console.ReadLine();
+                                while (c.firstName.Equals(name))
+                                {
+                                    Console.WriteLine($"Entered {name} is already present");
+                                    Console.WriteLine($"Entered different name to add contact");
+                                    break;
+                                }
+                            }
+                            addressBook.AddToContact();
+                        }
                         break;
                     case 'E':
                         addressBook.EditContact();
