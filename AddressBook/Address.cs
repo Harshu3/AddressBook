@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    internal class Address
+    public class Address
     {
         public string firstName;
         public string lastName;
@@ -16,18 +16,5 @@ namespace AddressBook
         public int zip;
         public int phone;
         public string email;
-
-        public Address(string firstName, string lastName, string address, string city, string state, int zip, int phone, string email)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.address = address;
-            this.city = city;
-            this.state = state;
-            this.zip = zip;
-            this.phone = phone;
-            this.email = email;
-
-        }
     }
 }
