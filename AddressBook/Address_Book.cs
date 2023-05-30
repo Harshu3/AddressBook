@@ -86,6 +86,37 @@ namespace AddressBook
             Console.WriteLine("Contact Edited successfully");
         }
 
+        public void Search()
+        {
+            Console.WriteLine("Enter 1 to search by City\nEnter 2 to search by State");
+            int input = int.Parse(Console.ReadLine());
+            string res = "";
+
+            switch (input)
+            {
+                case 1:
+                    Console.WriteLine("Enter City Name");
+                    var city = Console.ReadLine();
+                    res = city;
+                    break;
+                case 2:
+                    Console.WriteLine("Enter State Name");
+                    var state = Console.ReadLine();
+                    res = state;
+                    break;
+            }
+            foreach (var contact in addresses)
+            {
+                if (contact.city.Equals(res) || contact.state.Equals(res))
+                {
+                    Console.WriteLine("\nAddressBook Name: " + AddressBook_Name + "\nFirst Name: " + contact.firstName + "\nLast Name: " + contact.lastName + "\nAddress: " + contact.address + "\nCity: " + contact.city + "\nState: " + contact.state + "\nZipCode: " + contact.zip + "\nPhone: " + contact.phone + "\nEmail: " + contact.email);
+                    break;
+                }
+                else
+                    Console.WriteLine("Person search by City or State is not present in Contact");
+            }
+        }
+
         public void DeleteContact()
         {
             Console.WriteLine("\nEnter First Name of contact to Delete");

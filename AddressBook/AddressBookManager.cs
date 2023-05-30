@@ -49,7 +49,7 @@ namespace AddressBookSystem
 
             while (flag)
             {
-                Console.WriteLine("\nEnter A to Add new contact\nEnter E to edit contact\nEnter D to delete contact\nEnter P to print the contacts");
+                Console.WriteLine("\nEnter A to Add new contact\nEnter E to edit contact\nEnter D to delete contact\nEnter P to print the contacts\nEnter S to search contacts");
                 char ch = Console.ReadLine().ToUpper()[0];
 
                 switch (ch)
@@ -84,6 +84,9 @@ namespace AddressBookSystem
                     case 'P':
                         addressBook.Display();
                         break;
+                    case 'S':
+                        addressBook.Search();
+                        break;
                     default:
                         break;
                 }
@@ -93,9 +96,9 @@ namespace AddressBookSystem
                 if (input.Equals("BACK"))
                 {
                     flag = false;
+                    Console.Clear();
                 }
                 Thread.Sleep(1000);
-                Console.Clear();
             }
         }
     }
