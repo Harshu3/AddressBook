@@ -11,49 +11,103 @@ namespace AddressBook
     {
         public List<Address> addresses;
         public string AddressBook_Name;
+        Dictionary<string, string> cities;
+        Dictionary<string, string> states;
 
         public Address_Book(string addressBook_Name)
         {
             addresses = new List<Address>();
             AddressBook_Name = addressBook_Name;
+            cities = new Dictionary<string, string>();
+            states = new Dictionary<string, string>();
         }
 
         public Address AddToContact()
         {
             Address address = new Address();
             Console.WriteLine("Enter First Name:");
-            address.firstName = Console.ReadLine();
+            var fName = Console.ReadLine();
+            address.firstName = fName;
             Console.WriteLine("Enter Last Name:");
-            address.lastName = Console.ReadLine();
+            var lName = Console.ReadLine();
+            address.lastName = lName;
             Console.WriteLine("Enter Address:");
-            address.address = Console.ReadLine();
+            var adr = Console.ReadLine();
+            address.address = adr;
             Console.WriteLine("Enter City:");
-            address.city = Console.ReadLine();
+            var city = Console.ReadLine();
+            address.city = city;
             Console.WriteLine("Enter State:");
-            address.state = Console.ReadLine();
+            var state = Console.ReadLine();
+            address.state = state;
             Console.WriteLine("Enter Zip Code");
             address.zip = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Phone Number:");
             address.phone = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Email:");
-            address.email = Console.ReadLine();
+            var mail = Console.ReadLine();
+            address.email = mail;
             addresses.Add(address);
+            cities.Add(city, fName);
+            states.Add(state, fName);
             Console.WriteLine("Contact added successfully!\n------------------");
             return address;
         }
 
         public void Display()
         {
-            if (addresses.Count <= 0)
+            Console.WriteLine("Enter 1 to print all data\nEnter 2 to view persons by state or city");
+            int input = int.Parse(Console.ReadLine());
+
+            switch (input)
             {
-                Console.WriteLine("No contacts available");
-            }
-            else
-            {
-                foreach (var contact in addresses)
-                {
-                    Console.WriteLine("AddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName: " + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
-                }
+                case 1:
+                    if (addresses.Count <= 0)
+                    {
+                        Console.WriteLine("No contacts available");
+                    }
+                    else
+                    {
+                        foreach (var contact in addresses)
+                        {
+                            Console.WriteLine("AddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName: " + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
+                        }
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter 1 to view person by city\nEnter 2 to view persons by state");
+                    int option = int.Parse(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            if (cities.Count <= 0)
+                            {
+                                Console.WriteLine("No contacts available");
+                            }
+                            else
+                            {
+                                foreach (var c in cities)
+                                {
+                                    Console.WriteLine(c);
+                                }
+                            }
+                            break;
+                        case 2:
+                            if (states.Count <= 0)
+                            {
+                                Console.WriteLine("No contacts available");
+                            }
+                            else
+                            {
+                                foreach (var s in states)
+                                {
+                                    Console.WriteLine(s);
+                                }
+                            }
+                            break;
+                    }
+                    break;
             }
         }
 
