@@ -56,7 +56,7 @@ namespace AddressBook
 
         public void Display()
         {
-            Console.WriteLine("\nEnter 1 to print all data\nEnter 2 to view persons by state or city\nEnter 3 to get number of persons by state or city\nEnter 4 to print entries in alphabetical order");
+            Console.WriteLine("\nEnter 1 to print all data\nEnter 2 to view persons by state or city\nEnter 3 to get number of persons by state or city\nEnter 4 to print entries in alphabetical order\nEnter 5 to sort entries by city, state and zipcode");
             int input = int.Parse(Console.ReadLine());
 
             switch (input)
@@ -168,6 +168,57 @@ namespace AddressBook
                         {
                             Console.WriteLine("AddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName: " + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
                         }
+                    }
+                    break;
+                case 5:
+                    if (addresses.Count <= 0)
+                    {
+                        Console.WriteLine("No contacts available");
+                        return;
+                    }
+                    Console.WriteLine("Enter 1 to sort by city\nEnter 2 to sort by state\nEnter 3 to sort by zipcode");
+                    int choose = int.Parse(Console.ReadLine());
+                    switch (choose)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter city name");
+                            var Citys = Console.ReadLine();
+                            foreach (var contact in addresses)
+                            {
+                                if (Citys == contact.city)
+                                {
+                                    Console.WriteLine("\nAddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName:" + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
+                                }
+                                else
+                                    Console.WriteLine("No contacts having entered city");
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter state name");
+                            var States = Console.ReadLine();
+                            foreach (var contact in addresses)
+                            {
+                                if (States == contact.state)
+                                {
+                                    Console.WriteLine("\nAddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName:" + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
+                                }
+                                else
+                                    Console.WriteLine("No contacts having entered state");
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter Zipcode name");
+                            var Zipcodes = int.Parse(Console.ReadLine());
+                            foreach (var contact in addresses)
+                            {
+                                if (Zipcodes == contact.zip)
+                                {
+                                    Console.WriteLine("\nAddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName:" + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
+                                }
+                                else
+                                    Console.WriteLine("No contacts having entered zipcode");
+                            }
+                            break;
                     }
                     break;
             }
