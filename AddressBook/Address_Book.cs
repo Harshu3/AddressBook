@@ -56,7 +56,7 @@ namespace AddressBook
 
         public void Display()
         {
-            Console.WriteLine("Enter 1 to print all data\nEnter 2 to view persons by state or city");
+            Console.WriteLine("Enter 1 to print all data\nEnter 2 to view persons by state or city\nEnter 3 to get number of persons by state or city");
             int input = int.Parse(Console.ReadLine());
 
             switch (input)
@@ -104,6 +104,53 @@ namespace AddressBook
                                 {
                                     Console.WriteLine(s);
                                 }
+                            }
+                            break;
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Enter 1 to get number of persons by city\nEnter 2 to get number of persons by state");
+                    int choice = int.Parse(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine("Enter the city name");
+                            var city = Console.ReadLine();
+                            int count = 0;
+                            foreach (var c in cities)
+                            {
+                                if (c.Key.Equals(city))
+                                {
+                                    count++;
+                                }
+                            }
+                            if (count == 0)
+                            {
+                                Console.WriteLine($"No person of city {city} is present");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{count} person of city is present in contact");
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter the state name");
+                            var state = Console.ReadLine();
+                            int count2 = 0;
+                            foreach (var s in states)
+                            {
+                                if (s.Key.Equals(state))
+                                {
+                                    count2++;
+                                }
+                            }
+                            if (count2 == 0)
+                            {
+                                Console.WriteLine($"No person of state {state} is present");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{count2} person of city is present in contact");
                             }
                             break;
                     }
