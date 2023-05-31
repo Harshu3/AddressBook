@@ -25,7 +25,7 @@ namespace AddressBook
         public Address AddToContact()
         {
             Address address = new Address();
-            Console.WriteLine("Enter First Name:");
+            Console.WriteLine("\nEnter First Name:");
             var fName = Console.ReadLine();
             address.firstName = fName;
             Console.WriteLine("Enter Last Name:");
@@ -56,7 +56,7 @@ namespace AddressBook
 
         public void Display()
         {
-            Console.WriteLine("Enter 1 to print all data\nEnter 2 to view persons by state or city\nEnter 3 to get number of persons by state or city");
+            Console.WriteLine("\nEnter 1 to print all data\nEnter 2 to view persons by state or city\nEnter 3 to get number of persons by state or city\nEnter 4 to print entries in alphabetical order");
             int input = int.Parse(Console.ReadLine());
 
             switch (input)
@@ -150,9 +150,24 @@ namespace AddressBook
                             }
                             else
                             {
-                                Console.WriteLine($"{count2} person of city is present in contact");
+                                Console.WriteLine($"{count2} person of state is present in contact");
+                                return;
                             }
                             break;
+                    }
+                    break;
+                case 4:
+                    if (addresses.Count <= 0)
+                    {
+                        Console.WriteLine("No contacts available");
+                    }
+                    else
+                    {
+                        addresses.Sort((x, y) => x.firstName.CompareTo(y.firstName));
+                        foreach (var contact in addresses)
+                        {
+                            Console.WriteLine("AddressBook Name: " + AddressBook_Name + "\n FirstName: " + contact.firstName + "\n LastName: " + contact.lastName + "\n Address: " + contact.address + "\n City: " + contact.city + "\n State: " + contact.state + "\n Zip: " + contact.zip + "\n Phone: " + contact.phone + "\n Email: " + contact.email + "\n------------------");
+                        }
                     }
                     break;
             }
